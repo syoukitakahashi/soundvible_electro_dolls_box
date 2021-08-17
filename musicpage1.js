@@ -28,6 +28,17 @@ window.addEventListener('DOMContentLoaded', function(){
           playback_position.textContent = convertTime(bgm.currentTime);
         };
 
+        // プログレスバーが操作されたときに実行（メモリを動かしているとき）
+        slider_progress.addEventListener("input", e => {
+          stopTimer();
+          bgm.currentTime = slider_progress.value;
+        });
+
+        // プログレスバーが操作完了したときに実行
+        slider_progress.addEventListener("change", e => {
+        startTimer();
+        });
+
         // 再生時間の表記を「mm:ss」に整える
         const convertTime = function(time_position) {   
           time_position = Math.floor(time_position);
