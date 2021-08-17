@@ -1,28 +1,29 @@
 window.addEventListener('DOMContentLoaded', function(){
     window.addEventListener("load", async ()=>{
         const audioctx = new AudioContext();
-        const bgm = document.querySelector('#bgm');
-        const track = audioctx.createMediaElementSource(bgm);
+        const audioElement = document.querySelector('#bgm');
+        const bgm = audioctx.createMediaElementSource(audioElement);
         let mode = 0;
-        let src = null;
+        //let src = null;
         const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.7});
         const btn_loop = document.querySelector("#btn_loop");
         const btn_vo = document.querySelector("#btn_vo");
         const vosl = document.querySelector("#volumesl");
         
         document.getElementById("btn_play").addEventListener("click",()=>{
-            if(audioctx.state=="suspended")
-                audioctx.resume();
-            if(src == null){
-                src = new AudioBufferSourceNode(audioctx, {buffer:soundbuf,loop:false});
-                src.connect(analyser).connect(audioctx.destination);
-                src.start();
-            }
+          if( ! bgm.paused ){
+            bgm.pause();
+            stopTimer();
+          }
+          else{
+            bgm.play();
+            startTimer();
+          }
         });
 
         document.getElementById("btn_stop").addEventListener("click",()=>{
-            if(src) src.stop();
-            src = null;
+            bgm.pause();
+            bgm.currentTime = 0;
         });
         document.getElementById("mode").addEventListener("change",(ev)=>{
             mode = ev.target.selectedIndex;
