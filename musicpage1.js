@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         // プログレスバーが操作完了したときに実行
         slider_progress.addEventListener("change", e => {
-        startTimer();
+          startTimer();
         });
 
         // 再生時間の表記を「mm:ss」に整える
