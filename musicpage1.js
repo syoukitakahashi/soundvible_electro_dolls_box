@@ -1,7 +1,8 @@
 window.addEventListener('DOMContentLoaded', function(){
     window.addEventListener("load", async ()=>{
         const audioctx = new AudioContext();
-        const soundbuf = await LoadSample(audioctx, "Another Myself/mp3/Another Myself.mp3");
+        const bgm = document.querySelector('#bgm');
+        const track = audioctx.createMediaElementSource(bgm);
         let mode = 0;
         let src = null;
         const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.7});
