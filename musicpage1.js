@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', function(){
         const audioElement = document.querySelector('#bgm');
         const gainvol = new GainNode(audioctx,{gain:1.5});
         let mode = 0;
-        const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.3});
+        const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.2});
         const btn_loop = document.querySelector("#btn_loop");
         const btn_vo = document.querySelector("#btn_vo");
         const vosl = document.querySelector("#volumesl");
