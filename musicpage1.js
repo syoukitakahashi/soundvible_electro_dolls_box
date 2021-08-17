@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', function(){
         const audioctx = new AudioContext();
         const audioElement = document.querySelector('#bgm');
         const bgm = audioctx.createMediaElementSource(audioElement);
+        const gainvol = new GainNode(audioctx,{gain:1.5});
         let mode = 0;
         //let src = null;
         const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.7});
@@ -37,49 +38,37 @@ window.addEventListener('DOMContentLoaded', function(){
         });
       
         btn_loop.addEventListener("click", ()=>{
-          if(src.loop){
-            src.loop = false;
+          if(bgm.loop){
+            bgm.loop = false;
           }
           else{
-            src.loop = true;
+            bgm.loop = true;
           }
         });
       
         vosl.addEventListener("input", ()=>{
-          src.volume = vosl.value;
+          gainvol.gain.value = vosl.value;
           if(vosl.value == 0){
             btn_vo.classList.replace("volume", "mute");
-            src.muted = true;
+            gainvol.gain.value = 0;
           }
           else{
             btn_vo.classList.replace("mute", "volume");
-            src.muted = false;
+            gainvol.gain.value = vosl.value;
           }
         });
-      
-          btn_vo.addEventListener("click", ()=>{
-            if(src.muted){
-              src.muted = false;
-              btn_vo.classList.replace("mute", "volume");
-            }
-            else{
-              src.muted = true;
-              btn_vo.classList.replace("volume", "mute");
-            }
-          });
-
-        function LoadSample(actx, url) {
-            return new Promise((resolv)=>{
-                fetch(url).then((response)=>{
-                    return response.arrayBuffer();
-                }).then((arraybuf)=>{
-                    return actx.decodeAudioData(arraybuf);
-                }).then((buf)=>{
-                    resolv(buf);
-                })
-            });
-        }
     
+        btn_vo.addEventListener("click", ()=>{
+          if(gainvol.gain.value == 0){
+            gainvol.gain.value = vosl.value;
+            btn_vo.classList.replace("mute", "volume");
+          }
+          else{
+            gainvol.gain.value = 0;
+            btn_vo.classList.replace("volume", "mute");
+          }
+        });
+        
         const canvasctx = document.getElementById("graph").getContext("2d");
     
         function DrawGraph() {
