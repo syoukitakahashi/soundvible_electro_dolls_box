@@ -11,6 +11,8 @@ window.addEventListener('DOMContentLoaded', function(){
         const btn_vo = document.querySelector("#btn_vo");
         const vosl = document.querySelector("#volumesl");
         
+        bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
+        
         document.getElementById("btn_play").addEventListener("click",()=>{
           if( ! bgm.paused ){
             bgm.pause();
