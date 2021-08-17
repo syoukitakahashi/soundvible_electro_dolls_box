@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', function(){
         };
 
         // 音声ファイルの再生準備が整ったときに実行
-        bgm.addEventListener('loadeddata', (e)=>{
+        audioElement.addEventListener('loadeddata', (e)=>{
           const bgm = audioctx.createMediaElementSource(audioElement);
           slider_progress.max = bgm.duration;
           playback_position.textContent = convertTime(bgm.currentTime);
