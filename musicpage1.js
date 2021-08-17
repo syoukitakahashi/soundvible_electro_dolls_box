@@ -55,11 +55,11 @@ window.addEventListener('DOMContentLoaded', function(){
 
         // 音声ファイルの再生準備が整ったときに実行
         audioElement.addEventListener('loadeddata', (e)=>{
-          const bgm = audioctx.createMediaElementSource(audioElement);
-          bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
           slider_progress.max = audioElement.duration;
           playback_position.textContent = convertTime(audioElement.currentTime);
           end_position.textContent = convertTime(audioElement.duration);
+          const bgm = audioctx.createMediaElementSource(audioElement);
+          bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
         });
 
         // 音声ファイルが最後まで再生されたときに実行
