@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+  <link href="musicpage.js"  rel="preload" as="script">
+  <link rel="stylesheet" href="musicpage.css" media="print" onload="this.media='all'">
+  <link href="Picture/sozai_cman_jp_20210628165117.png" rel="preload" as="image">
+  <link href="Picture/sozai_cman_jp_20210628165342.png" rel="preload" as="image">
+
+</head>
+<body>
+
+<!-- cover art -->
+<div class= "cover">
+  <img src ="Another Myself/Another Myself_cover art.jpg"  width="34.5%" height="80%">
+  <canvas  class="analys" id="graph" width=555 height=370></canvas>
+  <table class = "canoption">
+    <tr><th>Frequency/TimeDomain</th><td><select id="mode"><option>Frequency</option><option>TimeDomain</option></select></td></tr>
+    <tr><th>SmoothingTimeConstant</th><td><input  id="smoothing" type="range" min="0" max="1" step="0.1" value="0.1"/></td><td id="smoothingval">0.3</td></tr>
+  </table>
+</div>
+
+<!-- 再生ボタン -->
+<div id= "btn_play" class="btn1" title="play/pause">
+</div>
+
+<!-- 停止ボタン -->
+<div id= "btn_stop" class="btn2" title="stop">
+</div>
+
+<!-- ループボタン2 -->
+<div id= "btn_loop" class="btnloop_off" class="btnloop_on" title="loop/on off">
+</div>
+
+<!-- ボリュームボタン -->
+<div id= "btn_vo" class="volume" class="mute" title="volume/mute">
+</div>
+
+<input type="range" id= "volumesl" class="vo_sl" min="0" max="2" step="0.01" value="1.5">
+
+<p><time id="playback_position" class="pt_position">0:00</time>
+<input type="range" id="progress" class="prog"value="0" min="0" step="1">
+<time id="end_position" class="et_position">0:00</time></p>
+
+<script type="text/JavaScript" src="musicpage1.js">
+</script>
+</body>
+</html>
