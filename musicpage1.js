@@ -57,9 +57,9 @@ window.addEventListener('DOMContentLoaded', function(){
         audioElement.addEventListener('loadeddata', (e)=>{
           const bgm = audioctx.createMediaElementSource(audioElement);
           bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
-          slider_progress.max = bgm.duration;
-          playback_position.textContent = convertTime(bgm.currentTime);
-          end_position.textContent = convertTime(bgm.duration);
+          slider_progress.max = audioElement.duration;
+          playback_position.textContent = convertTime(audioElement.currentTime);
+          end_position.textContent = convertTime(audioElement.duration);
         });
 
         // 音声ファイルが最後まで再生されたときに実行
