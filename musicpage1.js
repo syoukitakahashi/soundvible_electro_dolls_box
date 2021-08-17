@@ -10,6 +10,9 @@ window.addEventListener('DOMContentLoaded', function(){
         const btn_loop = document.querySelector("#btn_loop");
         const btn_vo = document.querySelector("#btn_vo");
         const vosl = document.querySelector("#volumesl");
+        const playback_position = document.getElementById("playback_position");
+        const end_position = document.getElementById("end_position");
+        const slider_progress = document.getElementById("progress");
         
         bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
         
@@ -44,14 +47,14 @@ window.addEventListener('DOMContentLoaded', function(){
         };
 
         // 音声ファイルの再生準備が整ったときに実行
-        bgm.addEventListener('loadeddata', (e)=> {
+        bgm.addEventListener('loadeddata', (e)=>{
           slider_progress.max = bgm.duration;
           playback_position.textContent = convertTime(bgm.currentTime);
           end_position.textContent = convertTime(bgm.duration);
         });
 
         // 音声ファイルが最後まで再生されたときに実行
-        bgm.addEventListener("ended", e => {
+        bgm.addEventListener("ended", e =>{
           stopTimer();
         });
         
