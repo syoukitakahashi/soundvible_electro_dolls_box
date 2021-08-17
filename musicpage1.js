@@ -2,7 +2,6 @@ window.addEventListener('DOMContentLoaded', function(){
     window.addEventListener("load", async ()=>{
         const audioctx = new AudioContext();
         const audioElement = document.querySelector('#bgm');
-        const bgm = audioctx.createMediaElementSource(audioElement);
         const gainvol = new GainNode(audioctx,{gain:1.5});
         let mode = 0;
         //let src = null;
@@ -13,8 +12,6 @@ window.addEventListener('DOMContentLoaded', function(){
         const playback_position = document.getElementById("playback_position");
         const end_position = document.getElementById("end_position");
         const slider_progress = document.getElementById("progress");
-        
-        bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
         
         var playtimer = null;
 
@@ -48,9 +45,11 @@ window.addEventListener('DOMContentLoaded', function(){
 
         // 音声ファイルの再生準備が整ったときに実行
         bgm.addEventListener('loadeddata', (e)=>{
+          const bgm = audioctx.createMediaElementSource(audioElement);
           slider_progress.max = bgm.duration;
           playback_position.textContent = convertTime(bgm.currentTime);
           end_position.textContent = convertTime(bgm.duration);
+          bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
         });
 
         // 音声ファイルが最後まで再生されたときに実行
