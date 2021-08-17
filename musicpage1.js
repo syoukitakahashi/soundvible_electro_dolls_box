@@ -13,6 +13,48 @@ window.addEventListener('DOMContentLoaded', function(){
         
         bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
         
+        var playtimer = null;
+
+        // 再生開始したときに実行
+        const startTimer = function(){
+          playtimer = setInterval(function(){
+            playback_position.textContent = convertTime(bgm.currentTime);
+            slider_progress.value = Math.floor( (bgm.currentTime / bgm.duration) * bgm.duration);
+          }, 500);
+        };
+
+        // 停止したときに実行
+        const stopTimer = function(){
+          clearInterval(playtimer);
+          playback_position.textContent = convertTime(bgm.currentTime);
+        };
+
+        // 再生時間の表記を「mm:ss」に整える
+        const convertTime = function(time_position) {   
+          time_position = Math.floor(time_position);
+          var res = null;
+
+          if( 60 <= time_position ) {
+            res = Math.floor(time_position / 60);
+            res += ":" + Math.floor(time_position % 60).toString().padStart( 2, '0');
+          } else {
+            res = "0:" + Math.floor(time_position % 60).toString().padStart( 2, '0');
+          }
+          return res;
+        };
+
+        // 音声ファイルの再生準備が整ったときに実行
+        bgm.addEventListener('loadeddata', (e)=> {
+          slider_progress.max = bgm.duration;
+          playback_position.textContent = convertTime(bgm.currentTime);
+          end_position.textContent = convertTime(bgm.duration);
+        });
+
+        // 音声ファイルが最後まで再生されたときに実行
+        bgm.addEventListener("ended", e => {
+          stopTimer();
+        });
+        
         document.getElementById("btn_play").addEventListener("click",()=>{
           if( ! bgm.paused ){
             bgm.pause();
