@@ -153,10 +153,11 @@
     position: absolute;
     margin: 0;
     top: 80%;
-    right: 54%;
+    right: 52%;
     padding: 0;
     //height: 1%;
     //width: 38%;
+    color: #ffffff
     display: inline;
     //visibility: hidden;
  }
@@ -166,7 +167,7 @@
     position: absolute;
     margin: 1%;
     top: 80%;
-    right: 12%;
+    right: 10%;
     padding: 0;
     background: #ddd;
     height: 1%;
@@ -179,10 +180,11 @@
     position: absolute;
     margin: 0;
     top: 80%;
-    right: 9%;
+    right: 7%;
     padding: 0;
     //height: 1%;
     //width: 38%;
+    color: #ffffff
     display: inline;
     //visibility: hidden;
  }
