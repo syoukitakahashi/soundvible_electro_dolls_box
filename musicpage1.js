@@ -4,8 +4,7 @@ window.addEventListener('DOMContentLoaded', function(){
         const audioElement = document.querySelector('#bgm');
         const gainvol = new GainNode(audioctx,{gain:1.5});
         let mode = 0;
-        //let src = null;
-        const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.7});
+        const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.3});
         const btn_loop = document.querySelector("#btn_loop");
         const btn_vo = document.querySelector("#btn_vo");
         const vosl = document.querySelector("#volumesl");
@@ -46,10 +45,10 @@ window.addEventListener('DOMContentLoaded', function(){
         // 音声ファイルの再生準備が整ったときに実行
         audioElement.addEventListener('loadeddata', (e)=>{
           const bgm = audioctx.createMediaElementSource(audioElement);
+          bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
           slider_progress.max = bgm.duration;
           playback_position.textContent = convertTime(bgm.currentTime);
           end_position.textContent = convertTime(bgm.duration);
-          bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
         });
 
         // 音声ファイルが最後まで再生されたときに実行
