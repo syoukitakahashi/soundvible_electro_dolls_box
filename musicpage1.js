@@ -13,33 +13,8 @@ window.addEventListener('DOMContentLoaded', function(){
         const slider_progress = document.getElementById("progress");
         
         var playtimer = null;
-
-        // 再生開始したときに実行
-        const startTimer = function(){
-          playtimer = setInterval(function(){
-            playback_position.textContent = convertTime(bgm.currentTime);
-            slider_progress.value = Math.floor( (bgm.currentTime / bgm.duration) * bgm.duration);
-          }, 500);
-        };
-
-        // 停止したときに実行
-        const stopTimer = function(){
-          clearInterval(playtimer);
-          playback_position.textContent = convertTime(bgm.currentTime);
-        };
-
-        // プログレスバーが操作されたときに実行（メモリを動かしているとき）
-        slider_progress.addEventListener("input", e => {
-          stopTimer();
-          bgm.currentTime = slider_progress.value;
-        });
-
-        // プログレスバーが操作完了したときに実行
-        slider_progress.addEventListener("change", e => {
-          startTimer();
-        });
-
-        // 再生時間の表記を「mm:ss」に整える
+        
+         // 再生時間の表記を「mm:ss」に整える
         const convertTime = function(time_position) {   
           time_position = Math.floor(time_position);
           var res = null;
@@ -58,8 +33,33 @@ window.addEventListener('DOMContentLoaded', function(){
           slider_progress.max = audioElement.duration;
           playback_position.textContent = convertTime(audioElement.currentTime);
           end_position.textContent = convertTime(audioElement.duration);
-          const bgm = audioctx.createMediaElementSource(audioElement);
+          var bgm = audioctx.createMediaElementSource(audioElement);
           bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
+        });
+
+        // 再生開始したときに実行
+        var startTimer = function(){
+          playtimer = setInterval(function(){
+            playback_position.textContent = convertTime(bgm.currentTime);
+            slider_progress.value = Math.floor( (bgm.currentTime / bgm.duration) * bgm.duration);
+          }, 500);
+        };
+
+        // 停止したときに実行
+        var stopTimer = function(){
+          clearInterval(playtimer);
+          playback_position.textContent = convertTime(bgm.currentTime);
+        };
+
+        // プログレスバーが操作されたときに実行（メモリを動かしているとき）
+        slider_progress.addEventListener("input", e => {
+          stopTimer();
+          bgm.currentTime = slider_progress.value;
+        });
+
+        // プログレスバーが操作完了したときに実行
+        slider_progress.addEventListener("change", e => {
+          startTimer();
         });
 
         // 音声ファイルが最後まで再生されたときに実行
