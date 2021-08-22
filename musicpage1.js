@@ -80,6 +80,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         document.getElementById("btn_stop").addEventListener("click",()=>{
             bgm.pause();
+            stopTimer();
             bgm.currentTime = 0;
         });
  
