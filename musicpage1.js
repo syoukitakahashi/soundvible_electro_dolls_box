@@ -82,12 +82,6 @@ window.addEventListener('DOMContentLoaded', function(){
             bgm.pause();
             bgm.currentTime = 0;
         });
-        document.getElementById("mode").addEventListener("change",(ev)=>{
-            mode = ev.target.selectedIndex;
-        });
-        document.getElementById("smoothing").addEventListener("input",(ev)=>{
-            analyser.smoothingTimeConstant = document.getElementById("smoothingval").innerHTML = ev.target.value;
-        });
  
         btn_loop.addEventListener('click', function(){
             this.classList.toggle('btnloop_on');
@@ -135,7 +129,6 @@ window.addEventListener('DOMContentLoaded', function(){
             var x = 0;
             const data = new Uint8Array(256);
             if(mode == 0) analyser.getByteFrequencyData(data); //Spectrum Data
-            else analyser.getByteTimeDomainData(data); //Waveform Data
             for(var i = 0; i < 256; ++i) {
                 canvasctx.fillStyle = 'rgba(0, 255, 255, 0.8)';
                 canvasctx.fillRect(x, 370- data[i], barWidth, data[i]);
