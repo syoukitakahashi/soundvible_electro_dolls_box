@@ -25,21 +25,6 @@
     display: inline;
  }
 
- .canoption{
-    margin: 1%;
-    position: absolute;
-    top: 65%;
-    right: 15%;
-    padding: 0%;
-    border: none;
-    background: #f5f5f5;
-    display: inline;
-    visibility: hidden;
- }
- .canoption:hover{
-    visibility: visible;
- }
-
  .btn1 {
     margin: 1%;
     margin-left: 9%;
