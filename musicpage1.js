@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', function(){
     window.addEventListener("load", async ()=>{
         const audioctx = new AudioContext();
         const audioElement = document.querySelector('#bgm');
-        const gainvol = new GainNode(audioctx,{gain:1.5});
+        const gainvol = new GainNode(audioctx,{gain:0.7});
         let mode = 0;
         const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.2});
         const btn_loop = document.querySelector("#btn_loop");
