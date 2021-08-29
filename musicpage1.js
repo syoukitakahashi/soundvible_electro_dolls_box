@@ -71,7 +71,7 @@ window.addEventListener('DOMContentLoaded', function(){
             bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
             bgm.play();
             startTimer();
-            mode = +1;
+            mode += 1;
           }
         },true);
         
