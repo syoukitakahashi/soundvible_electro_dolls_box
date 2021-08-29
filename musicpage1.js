@@ -1,10 +1,7 @@
 window.addEventListener('DOMContentLoaded', function(){
     window.addEventListener("load", async ()=>{
-        const audioctx = new AudioContext();
         const audioElement = document.querySelector('#bgm');
-        const gainvol = new GainNode(audioctx,{gain:0.7});
-        let mode = 0;
-        const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.2});
+        var mode = 0;
         const btn_loop = document.querySelector("#btn_loop");
         const btn_vo = document.querySelector("#btn_vo");
         const vosl = document.querySelector("#volumesl");
@@ -33,8 +30,6 @@ window.addEventListener('DOMContentLoaded', function(){
           slider_progress.max = audioElement.duration;
           playback_position.textContent = convertTime(audioElement.currentTime);
           end_position.textContent = convertTime(audioElement.duration);
-          var bgm = audioctx.createMediaElementSource(audioElement);
-          bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
         });
 
         // 再生開始したときに実行
@@ -66,6 +61,19 @@ window.addEventListener('DOMContentLoaded', function(){
         bgm.addEventListener("ended", e =>{
           stopTimer();
         });
+        
+        document.getElementById("btn_play").addEventListener("click",()=>{
+          if(mode == 0){
+            const audioctx = new AudioContext();
+            const gainvol = new GainNode(audioctx,{gain:0.7});
+            const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.2});
+            var bgm = audioctx.createMediaElementSource(audioElement);
+            bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
+            bgm.play();
+            startTimer();
+            mode = +1;
+          }
+        },true);
         
         document.getElementById("btn_play").addEventListener("click",()=>{
           if( ! bgm.paused ){
