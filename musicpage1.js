@@ -65,9 +65,9 @@ window.addEventListener('DOMContentLoaded', function(){
         
         document.getElementById("btn_play").addEventListener("click",()=>{
           if(src == 0){
-            const audioctx = new AudioContext();
-            const gainvol = new GainNode(audioctx,{gain:0.7});
-            const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.2});
+            var audioctx = new AudioContext();
+            var gainvol = new GainNode(audioctx,{gain:0.7});
+            var analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.2});
             var bgm = audioctx.createMediaElementSource(audioElement);
             bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
             bgm.play();
