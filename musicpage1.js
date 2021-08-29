@@ -1,6 +1,7 @@
 window.addEventListener('DOMContentLoaded', function(){
     window.addEventListener("load", async ()=>{
         const audioElement = document.querySelector('#bgm');
+        var src = 0;
         var mode = 0;
         const btn_loop = document.querySelector("#btn_loop");
         const btn_vo = document.querySelector("#btn_vo");
@@ -63,7 +64,7 @@ window.addEventListener('DOMContentLoaded', function(){
         });
         
         document.getElementById("btn_play").addEventListener("click",()=>{
-          if(mode == 0){
+          if(src == 0){
             const audioctx = new AudioContext();
             const gainvol = new GainNode(audioctx,{gain:0.7});
             const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.2});
@@ -71,7 +72,7 @@ window.addEventListener('DOMContentLoaded', function(){
             bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
             bgm.play();
             startTimer();
-            mode += 1;
+            src += 1;
           }
         },true);
         
