@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', function(){
     window.addEventListener("load", async ()=>{
         const audioElement = document.querySelector('#bgm');
-        var src = 0;
+        var bgm = null;
         var mode = 0;
         const btn_loop = document.querySelector("#btn_loop");
         const btn_vo = document.querySelector("#btn_vo");
@@ -64,33 +64,29 @@ window.addEventListener('DOMContentLoaded', function(){
         });
         
         document.getElementById("btn_play").addEventListener("click",()=>{
-          if(src == 0){
-            var audioctx = new AudioContext();
-            var gainvol = new GainNode(audioctx,{gain:0.7});
-            var analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.2});
-            var bgm = audioctx.createMediaElementSource(audioElement);
-            bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
-            bgm.play();
+          if(audioctx.state=="suspended"){
+            audioctx.resume();
             startTimer();
-            src += 1;
-          }
-        },true);
-        
-        document.getElementById("btn_play").addEventListener("click",()=>{
-          if( ! bgm.paused ){
-            bgm.pause();
-            stopTimer();
           }
           else{
-            bgm.play();
+            audioctx.suspend();
+            stopTimer();
+          }  
+          if(bgm == null){
+            const audioctx = new AudioContext();
+            const soundbuf = await LoadSample(audioctx, "Electro Dolls Box/Electro Dolls Box.mp3");
+            bgm = new AudioBufferSourceNode(audioctx, {buffer:soundbuf,loop:false});
+            const gainvol = new GainNode(audioctx,{gain:0.7});
+            const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.2});
+            bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
+            bgm.start();
             startTimer();
           }
-        });
+        },true);
 
         document.getElementById("btn_stop").addEventListener("click",()=>{
-            bgm.pause();
+            bgm.stop();
             stopTimer();
-            bgm.currentTime = 0;
         });
  
         btn_loop.addEventListener('click', function(){
