@@ -74,7 +74,7 @@ window.addEventListener('DOMContentLoaded', function(){
           }  
           if(bgm == null){
             const audioctx = new AudioContext();
-            const soundbuf = await LoadSample(audioctx, "Electro Dolls Box/Electro Dolls Box.mp3");
+            const soundbuf = await LoadSample(audioctx, audioElement);
             bgm = new AudioBufferSourceNode(audioctx, {buffer:soundbuf,loop:false});
             const gainvol = new GainNode(audioctx,{gain:0.7});
             const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.2});
