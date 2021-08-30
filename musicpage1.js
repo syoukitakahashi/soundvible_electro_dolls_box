@@ -34,7 +34,6 @@ window.addEventListener('DOMContentLoaded', function(){
           playback_position.textContent = convertTime(audioElement.currentTime);
           end_position.textContent = convertTime(audioElement.duration);
           var bgm = audioctx.createMediaElementSource(audioElement);
-          bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
         });
 
         // 再生開始したときに実行
@@ -72,9 +71,14 @@ window.addEventListener('DOMContentLoaded', function(){
             audioctx.resume();
             startTimer();
           }
-          else{
-            audioctx.suspend();
+          if(!bgm.pause()){
+            bgm.pause();
             stopTimer();
+          }
+          else{
+            bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
+            bgm.play();
+            startTimer();
           }
         });
 
