@@ -68,6 +68,8 @@ window.addEventListener('DOMContentLoaded', function(){
         });
         
         document.getElementById("btn_play").addEventListener("click",()=>{
+          if(audioctx.state=="suspended")
+            audioctx.resume();
           if( ! bgm.paused ){
             bgm.pause();
             stopTimer();
