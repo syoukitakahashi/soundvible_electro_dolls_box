@@ -69,16 +69,13 @@ window.addEventListener('DOMContentLoaded', function(){
         document.getElementById("btn_play").addEventListener("click",()=>{
           if(audioctx.state=="suspended"){
             audioctx.resume();
+          }
+          bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
+            audioElement.play();
             startTimer();
-          }
-          if(!bgm.pause()){
-            bgm.pause();
-            stopTimer();
-          }
           else{
-            bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
-            bgm.play();
-            startTimer();
+            audioElement.pause();
+            stopTimer();
           }
         });
 
