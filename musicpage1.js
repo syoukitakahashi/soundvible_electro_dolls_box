@@ -68,13 +68,13 @@ window.addEventListener('DOMContentLoaded', function(){
         });
         
         document.getElementById("btn_play").addEventListener("click",()=>{
-          if( ! bgm.paused ){
-            bgm.pause();
-            stopTimer();
+          if(audioctx.state=="suspended")
+            audioctx.resume();
+            startTimer();
           }
           else{
-            bgm.play();
-            startTimer();
+            audioctx.suspend();
+            stopTimer();
           }
         });
 
