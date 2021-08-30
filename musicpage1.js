@@ -70,13 +70,13 @@ window.addEventListener('DOMContentLoaded', function(){
           if(audioctx.state=="suspended"){
             audioctx.resume();
           }
-          bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
-            audioElement.play();
-            startTimer();
-          else{
+           else{
             audioElement.pause();
             stopTimer();
           }
+          bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
+            audioElement.play();
+            startTimer();
         });
 
         document.getElementById("btn_stop").addEventListener("click",()=>{
