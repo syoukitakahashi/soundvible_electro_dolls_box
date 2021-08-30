@@ -70,10 +70,6 @@ window.addEventListener('DOMContentLoaded', function(){
           if(audioctx.state=="suspended"){
             audioctx.resume();
           }
-          else{
-            audioElement.pause();
-            stopTimer();
-          }
           bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
             audioElement.play();
             startTimer();
