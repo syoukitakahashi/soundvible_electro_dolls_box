@@ -70,7 +70,7 @@ window.addEventListener('DOMContentLoaded', function(){
           if(audioctx.state=="suspended"){
             audioctx.resume();
           }
-           else{
+          else{
             audioElement.pause();
             stopTimer();
           }
