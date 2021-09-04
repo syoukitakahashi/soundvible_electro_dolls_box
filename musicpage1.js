@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', function(){
           slider_progress.max = audioElement.duration;
           playback_position.textContent = convertTime(audioElement.currentTime);
           end_position.textContent = convertTime(audioElement.duration);
-        },true);
+        });
 
         // 再生開始したときに実行
         var startTimer = function(){
