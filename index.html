@@ -21,27 +21,23 @@
   <canvas  class="analys" id="graph" width=555 height=370></canvas>
 </div>
 
-<!-- 再生ボタン -->
-<div id= "btn_play" class="btn1" title="play/pause">
+<div class="prog">
+ <p><time id="playback_position" class="pt_position">0:00</time>
+ <input type="range" id="progress" class="prog_bar" value="0" min="0" step="1" width="780px">
+ <time id="end_position" class="et_position">0:00</time></p>
 </div>
-
-<!-- 停止ボタン -->
-<div id= "btn_stop" class="btn2" title="stop">
+  
+<div　class="btn_box">
+  <!-- 再生ボタン -->
+  <div id= "btn_play" class="btn1" title="play/pause"></div>
+  <!-- 停止ボタン -->
+  <div id= "btn_stop" class="btn2" title="stop"></div>
+  <!-- ループボタン2 -->
+  <div id= "btn_loop" class="btnloop_off" class="btnloop_on" title="loop/on off"></div>
+  <!-- ボリュームボタン -->
+  <div id= "btn_vo" class="volume" class="mute" title="volume/mute"></div>
+  <input type="range" id= "volumesl" class="vo_sl" min="0" max="1" step="0.01" value="0.7">
 </div>
-
-<!-- ループボタン2 -->
-<div id= "btn_loop" class="btnloop_off" class="btnloop_on" title="loop/on off">
-</div>
-
-<!-- ボリュームボタン -->
-<div id= "btn_vo" class="volume" class="mute" title="volume/mute">
-</div>
-
-<input type="range" id= "volumesl" class="vo_sl" min="0" max="1" step="0.01" value="0.7">
-
-<p><time id="playback_position" class="pt_position" style="color:white">0:00</time>
-<input type="range" id="progress" class="prog"value="0" min="0" step="1">
-<time id="end_position" class="et_position" style="color:white">0:00</time></p>
 
 <script type="text/JavaScript" src="musicpage1.js">
 </script>
