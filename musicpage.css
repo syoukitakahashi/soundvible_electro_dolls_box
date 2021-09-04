@@ -95,6 +95,7 @@
     cursor: pointer;
     display: inline;
     overflow: hidden;
+    white-space: nowrap;
  }
  .mute {
     margin: 1%;
@@ -108,6 +109,7 @@
     cursor: pointer;
     display: inline;
     overflow: hidden;
+    white-space: nowrap;
  }
  .vo_sl{
     //-webkit-appearance: none;
@@ -125,6 +127,7 @@
     display: inline;
     cursor: pointer;
     visibility: hidden;
+    white-space: nowrap;
  }
  .vo_sl:hover{
     visibility: visible
