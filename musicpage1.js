@@ -1,10 +1,10 @@
 window.addEventListener('DOMContentLoaded', function(){
     window.addEventListener("load", async ()=>{
         const audioctx = new AudioContext();
-        const audioElement = document.querySelector('#bgm');
         const gainvol = new GainNode(audioctx,{gain:0.7});
+        const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.2});            
+        const audioElement = document.querySelector('#bgm');
         let mode = 0;
-        const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.2});
         const btn_loop = document.querySelector("#btn_loop");
         const btn_vo = document.querySelector("#btn_vo");
         const vosl = document.querySelector("#volumesl");
@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', function(){
         
         var playtimer = null;
         
-         // 再生時間の表記を「mm:ss」に整える
+        // 再生時間の表記を「mm:ss」に整える
         const convertTime = function(time_position) {   
           time_position = Math.floor(time_position);
           var res = null;
@@ -22,7 +22,8 @@ window.addEventListener('DOMContentLoaded', function(){
           if( 60 <= time_position ) {
             res = Math.floor(time_position / 60);
             res += ":" + Math.floor(time_position % 60).toString().padStart( 2, '0');
-          } else {
+          } 
+          else {
             res = "0:" + Math.floor(time_position % 60).toString().padStart( 2, '0');
           }
           return res;
@@ -30,12 +31,12 @@ window.addEventListener('DOMContentLoaded', function(){
 
         // 音声ファイルの再生準備が整ったときに実行
         audioElement.addEventListener('loadeddata', (e)=>{
+          var bgm = audioctx.createMediaElementSource(audioElement);
+          bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
           slider_progress.max = audioElement.duration;
           playback_position.textContent = convertTime(audioElement.currentTime);
           end_position.textContent = convertTime(audioElement.duration);
-          var bgm = audioctx.createMediaElementSource(audioElement);
-          bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
-        });
+        },true);
 
         // 再生開始したときに実行
         var startTimer = function(){
@@ -85,7 +86,7 @@ window.addEventListener('DOMContentLoaded', function(){
             stopTimer();
             bgm.currentTime = 0;
         });
- 
+        
         btn_loop.addEventListener('click', function(){
             this.classList.toggle('btnloop_on');
         });
@@ -126,18 +127,20 @@ window.addEventListener('DOMContentLoaded', function(){
     
         function DrawGraph() {
             canvasctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
-            canvasctx.fillRect(0, 0, 555, 370);
-            var barWidth = (555 / 256) * 3.7;
+            canvasctx.fillRect(0, 0, 780, 500);
+            var barWidth = (780 / 256) * 3.7;
             var barHeight;
             var x = 0;
-            const data = new Uint8Array(256);
+            const data = new Uint8Array(256);        
+            
             if(mode == 0) analyser.getByteFrequencyData(data); //Spectrum Data
             for(var i = 0; i < 256; ++i) {
+                barHeight = data[i] * 1.5;
                 canvasctx.fillStyle = 'rgba(0, 255, 255, 0.8)';
-                canvasctx.fillRect(x, 370- data[i], barWidth, data[i]);
+                canvasctx.fillRect(x, 500- data[i] * 1.5, barWidth, barHeight);
                 x += barWidth + 1;
             }
         }
         setInterval(DrawGraph, 100);
-    });
-  });
+    },true);
+  },true);
