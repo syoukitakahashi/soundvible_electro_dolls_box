@@ -185,7 +185,7 @@
  .pt_position{
     position: absolute;
     margin: 0;
-    top: 40vw;
+    top: 38vw;
     right: 52vw;
     padding: 0;
     //height: 1%;
@@ -200,7 +200,7 @@
     //appearance: none;
     position: absolute;
     margin: 1%;
-    top: 40vw;
+    top: 38vw;
     right: 10vw;
     padding: 0;
     background: #ddd;
@@ -213,7 +213,7 @@
  .et_position{
     position: absolute;
     margin: 0;
-    top: 40vw;
+    top: 38vw;
     right: 7.5vw;
     padding: 0;
     //height: 1%;
