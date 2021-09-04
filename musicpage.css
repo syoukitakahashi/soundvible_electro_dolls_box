@@ -3,7 +3,7 @@
 }
 
 .cover {
-    margin: 1%;
+    margin: 1vw;
     padding: 0;
     border: none;
     outline: none;
@@ -18,24 +18,24 @@
     
  }
   .analys{
-    margin: 9%;
+    margin: 9vw;
     position: absolute;
     margin-top: 0;
     width: 50vw;
-    padding: 0%;
+    padding: 0;
     border: none;
     display: inline;
  }
 
  .btn1 {
-    margin: 1%;
+    margin: 1vw;
     margin-left: 7.1vw;
-    padding: 0%;
+    padding: 0;
     border: none;
     content: url("Picture/sozai_cman_jp_20210502161652.png");
     //background: transparent;
-    width: 3.7%;
-    height: 7.3%;
+    width: 3.7vw;
+    height: 7.3vw;
     cursor: pointer;
     display: inline;
     overflow: hidden;
