@@ -160,13 +160,16 @@
     white-space: nowrap;
  }
  .vo_sl:hover{
-    visibility: visible
+    visibility: visible;
+    overflow: visible;
 }
  .volume:hover + .vo_sl{
-    visibility: visible
+    visibility: visible;
+    overflow: visible;
 
 } .mute:hover + .vo_sl{
-    visibility: visible
+    visibility: visible;
+    overflow: visible;
 }
 
  .prog_{
