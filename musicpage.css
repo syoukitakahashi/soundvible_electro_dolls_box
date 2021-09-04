@@ -39,6 +39,11 @@
     cursor: pointer;
     display: inline;
     overflow: hidden;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
  }
 
  .btn2 {
@@ -53,6 +58,11 @@
     cursor: pointer;
     display: inline;
     overflow: hidden;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
  }
 
 .btnloop_off {
@@ -67,6 +77,11 @@
     cursor: pointer;
     display: inline;
     overflow: hidden;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
 }
 
  .btnloop_on {
@@ -81,6 +96,11 @@
     cursor: pointer;
     display: inline;
     overflow: hidden;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
 }
 
  .volume {
@@ -96,6 +116,11 @@
     display: inline;
     overflow: hidden;
     white-space: nowrap;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
  }
  .mute {
     margin: 1%;
@@ -110,6 +135,11 @@
     display: inline;
     overflow: hidden;
     white-space: nowrap;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
  }
  .vo_sl{
     //-webkit-appearance: none;
