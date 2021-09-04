@@ -1,4 +1,4 @@
-window.addEventListener("load", function(){
+window.addEventListener('DOMContentLoaded', function(){
     window.addEventListener("load", async()=>{
         const audioctx = new AudioContext();
         const gainvol = new GainNode(audioctx,{gain:0.7});
