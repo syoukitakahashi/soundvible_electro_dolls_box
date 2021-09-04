@@ -142,5 +142,5 @@ window.addEventListener('DOMContentLoaded', function(){
             }
         }
         setInterval(DrawGraph, 100);
-    },true);
+    });
   },true);
