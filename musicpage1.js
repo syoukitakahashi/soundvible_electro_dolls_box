@@ -1,5 +1,5 @@
 
-    window.addEventListener("load", async()=>{
+    window.addEventListener("load", ()=>{
         const audioctx = new AudioContext();
         const gainvol = new GainNode(audioctx,{gain:0.7});
         const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.2});            
