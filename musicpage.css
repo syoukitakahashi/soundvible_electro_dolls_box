@@ -47,7 +47,7 @@
  }
 
  .btn2 {
-    margin: 1%;
+    margin: 1vw;
     //margin-left: 10%;
     padding: 0%;
     border: none;
@@ -66,7 +66,7 @@
  }
 
 .btnloop_off {
-    margin: 1%;
+    margin: 1vw;
     //margin-left: 15%;
     padding: 0;
     content: url("Picture/sozai_cman_jp_20210628164637.png");
@@ -85,7 +85,7 @@
 }
 
  .btnloop_on {
-    margin: 1%;
+    margin: 1vw;
     //margin-left: 15%;
     padding: 0;
     content: url("Picture/sozai_cman_jp_20210628165117.png");
@@ -104,7 +104,7 @@
 }
 
  .volume {
-    margin: 1%;
+    margin: 1vw;
     //margin-left: 20%;
     padding: 0;
     content: url("Picture/sozai_cman_jp_20210628165821.png");
@@ -123,7 +123,7 @@
     
  }
  .mute {
-    margin: 1%;
+    margin: 1vw;
     //margin-left: 20%;
     padding: 0;
     content: url("Picture/sozai_cman_jp_20210628165342.png");
