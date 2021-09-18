@@ -14,6 +14,15 @@
         
         var playtimer = null;
         
+                // 音声ファイルの再生準備が整ったときに実行
+        audioElement.addEventListener('loadeddata', (e)=>{
+          var bgm = audioctx.createMediaElementSource(audioElement);
+          bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
+          slider_progress.max = audioElement.duration;
+          playback_position.textContent = convertTime(audioElement.currentTime);
+          end_position.textContent = convertTime(audioElement.duration);
+        });
+        
         // 再生時間の表記を「mm:ss」に整える
         const convertTime = function(time_position) {   
           time_position = Math.floor(time_position);
@@ -28,15 +37,6 @@
           }
           return res;
         };
-
-        // 音声ファイルの再生準備が整ったときに実行
-        audioElement.addEventListener('loadeddata', (e)=>{
-          var bgm = audioctx.createMediaElementSource(audioElement);
-          bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
-          slider_progress.max = audioElement.duration;
-          playback_position.textContent = convertTime(audioElement.currentTime);
-          end_position.textContent = convertTime(audioElement.duration);
-        });
 
         // 再生開始したときに実行
         var startTimer = function(){
