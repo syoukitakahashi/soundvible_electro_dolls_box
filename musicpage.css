@@ -172,19 +172,6 @@
     overflow: visible;
 }
 
- .prog{
-    position: absolute;
-    margin: 1%;
-    //top: 80vw;
-    //right: 10%;
-    padding: 0;
-    //background: #ddd;
-    //height: 1%;
-    //width: 40%;
-    display: inline;
-    //cursor: pointer;
-    //visibility: hidden;
- }
  .pt_position{
     position: absolute;
     margin: 0;
