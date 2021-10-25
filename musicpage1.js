@@ -70,15 +70,16 @@
         
         document.getElementById("btn_play").addEventListener("click",()=>{
           if(audioctx.state=="suspended")
-            audioctx.resume();
-            startTimer();
+              bgm.currentTime = 0;
+              audioctx.resume();
+              startTimer();
           if( ! bgm.paused ){
-            bgm.pause();
-            stopTimer();
+              bgm.pause();
+              stopTimer();
           }
           else{
-            bgm.play();
-            startTimer();
+              bgm.play();
+              startTimer();
           }
         });
 
