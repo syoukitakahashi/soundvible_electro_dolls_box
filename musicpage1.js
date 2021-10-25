@@ -21,7 +21,7 @@
           slider_progress.max = audioElement.duration;
           playback_position.textContent = convertTime(audioElement.currentTime);
           end_position.textContent = convertTime(audioElement.duration);
-        });
+        },once: true);
         
         // 再生時間の表記を「mm:ss」に整える
         const convertTime = function(time_position) {   
