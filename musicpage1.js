@@ -15,13 +15,13 @@
         var playtimer = null;
         
                 // 音声ファイルの再生準備が整ったときに実行
-        audioElement.addEventListener('canplay', (e)=>{
+        audioElement.addEventListener('play', (e)=>{
           var bgm = audioctx.createMediaElementSource(audioElement);
           bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
           slider_progress.max = audioElement.duration;
           playback_position.textContent = convertTime(audioElement.currentTime);
           end_position.textContent = convertTime(audioElement.duration);
-        });
+        },once: true);
         
         // 再生時間の表記を「mm:ss」に整える
         const convertTime = function(time_position) {   
