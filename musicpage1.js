@@ -71,9 +71,13 @@
         
         document.getElementById("btn_play").addEventListener("click",()=>{
           if(audioctx.state=="suspended")
-              audioctx.resume();             
+              bgm.start();             
               startTimer();
           }
+          if(if(audioctx.state=="suspended")
+              audioctx.resume();             
+              startTimer();
+  
           else{
               audioctx.suspend();
               stopTimer();
