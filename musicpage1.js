@@ -124,9 +124,6 @@
         });
         
         const canvasctx = document.getElementById("graph").getContext("2d");
-        
-        document.getElementById("anal_on").addEventListener("click",DrawGraph(){          
-        });
 
         function DrawGraph() {
             canvasctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
