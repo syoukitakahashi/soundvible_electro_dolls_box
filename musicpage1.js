@@ -17,7 +17,7 @@
                 // 音声ファイルの再生準備が整ったときに実行
         audioElement.addEventListener('canplaythrough', ()=>{
           
-          
+          bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
           slider_progress.max = audioElement.duration;
           playback_position.textContent = convertTime(audioElement.currentTime);
           end_position.textContent = convertTime(audioElement.duration);
@@ -67,34 +67,21 @@
         bgm.addEventListener("ended", e =>{
           stopTimer();
         });
-        
-        var stopflag = 0;
-        
+           
         document.getElementById("btn_play").addEventListener("click",()=>{
-          if(stopflag == 0){
-            bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
-            bgm.start();
+          if(!bgm.paused){
+            bgm.play();
             startTimer();
-            stopflag = 1;
           }
+           else{
+             bgm.pause();
+             stopTimer();
         });
-        document.getElementById("btn_play").addEventListener("click",()=>{
-          if(stopflag == 1){
-            audioctx.suspend();            
-            stopTimer();
-            stopflag = 2;
-          }
-          if(stopflag == 2){
-            audioctx.resume();
-            startTimer();
-            stopflag = 1;
-          }
-        });
-
+        
         document.getElementById("btn_stop").addEventListener("click",()=>{
-            bgm.stop();
+            bgm.pause();
             stopTimer();
-            stopflag = 0;
+            bgm.currentTime = 0;
         });
         
         btn_loop.addEventListener('click', function(){
