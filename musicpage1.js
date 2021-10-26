@@ -72,20 +72,20 @@
           if (audioctx.state === "suspended") {
             audioctx.resume();
           }
-          if(!bgm.paused){
-            bgm.pause();
+          if(!audioElement.paused){
+            audioElement.pause();
             stopTimer();
           }
           else{
-            bgm.play();
+            audioElement.play();
             startTimer();
           }     
         });
         
         document.getElementById("btn_stop").addEventListener("click",()=>{
-            bgm.pause();
+            audioElement.pause();
             stopTimer();
-            bgm.currentTime = 0;
+            audioElement.currentTime = 0;
         });
         
         btn_loop.addEventListener('click', function(){
