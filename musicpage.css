@@ -30,11 +30,12 @@
     margin: 0;
     position: absolute;
     //margin-top: 0;
-    width: 5%;
-    height: 3%;
+    width: 7%;
+    height: 5%;
     padding: 0;
     border: none;
     display: inline;
+    color: #00FF7F;
  }
  .btn1 {
     margin: 1vw;
