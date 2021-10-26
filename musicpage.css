@@ -26,7 +26,16 @@
     border: none;
     display: inline;
  }
-
+ .btn0{
+    margin: 0;
+    position: absolute;
+    //margin-top: 0;
+    width: 5%;
+    height: 3%;
+    padding: 0;
+    border: none;
+    display: inline;
+ }
  .btn1 {
     margin: 1vw;
     margin-left: 7.1vw;
