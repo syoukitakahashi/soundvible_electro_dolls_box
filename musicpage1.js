@@ -17,7 +17,7 @@
                 // 音声ファイルの再生準備が整ったときに実行
         audioElement.addEventListener('canplaythrough', ()=>{
           
-          bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
+          
           slider_progress.max = audioElement.duration;
           playback_position.textContent = convertTime(audioElement.currentTime);
           end_position.textContent = convertTime(audioElement.duration);
@@ -40,7 +40,7 @@
 
         // 再生開始したときに実行
         var startTimer = function(){
-          playtimer = setInterval(function(){
+            playtimer = setInterval(function(){
             playback_position.textContent = convertTime(bgm.currentTime);
             slider_progress.value = Math.floor( (bgm.currentTime / bgm.duration) * bgm.duration);
           }, 500);
@@ -71,7 +71,8 @@
         var stopflag = 0;
         
         document.getElementById("btn_play").addEventListener("click",()=>{
-          if(stopflag == 0){   
+          if(stopflag == 0){
+            bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
             bgm.start();
             startTimer();
             stopflag = 1;
