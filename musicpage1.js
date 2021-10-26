@@ -15,7 +15,7 @@
         
                 // 音声ファイルの再生準備が整ったときに実行
         audioElement.addEventListener('canplaythrough', ()=>{
-          var bgm = audioctx.createMediaElementSource(audioElement);
+          
           bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
           slider_progress.max = audioElement.duration;
           playback_position.textContent = convertTime(audioElement.currentTime);
