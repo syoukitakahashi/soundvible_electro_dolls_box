@@ -41,21 +41,21 @@
         // 再生開始したときに実行
         var startTimer = function(){
             playtimer = setInterval(function(){
-            playback_position.textContent = convertTime(bgm.currentTime);
-            slider_progress.value = Math.floor( (bgm.currentTime / bgm.duration) * bgm.duration);
+            playback_position.textContent = convertTime(audioElement.currentTime);
+            slider_progress.value = Math.floor( (audioElement.currentTime / audioElement.duration) * audioElement.duration);
           }, 500);
         };
 
         // 停止したときに実行
         var stopTimer = function(){
           clearInterval(playtimer);
-          playback_position.textContent = convertTime(bgm.currentTime);
+          playback_position.textContent = convertTime(audioElement.currentTime);
         };
 
         // プログレスバーが操作されたときに実行（メモリを動かしているとき）
         slider_progress.addEventListener("input", e => {
           stopTimer();
-          bgm.currentTime = slider_progress.value;
+          audioElement.currentTime = slider_progress.value;
         });
 
         // プログレスバーが操作完了したときに実行
