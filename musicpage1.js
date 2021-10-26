@@ -1,10 +1,8 @@
-
     window.addEventListener("load", ()=>{
         const audioctx = new AudioContext();
         const gainvol = new GainNode(audioctx,{gain:0.7});
         const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.2});            
         const audioElement = document.querySelector('#bgm');
-        var bgm = audioctx.createMediaElementSource(audioElement);
         let mode = 0;
         const btn_loop = document.querySelector("#btn_loop");
         const btn_vo = document.querySelector("#btn_vo");
@@ -17,7 +15,7 @@
         
                 // 音声ファイルの再生準備が整ったときに実行
         audioElement.addEventListener('canplaythrough', ()=>{
-          
+          var bgm = audioctx.createMediaElementSource(audioElement);
           bgm.connect(gainvol).connect(analyser).connect(audioctx.destination);
           slider_progress.max = audioElement.duration;
           playback_position.textContent = convertTime(audioElement.currentTime);
@@ -71,22 +69,21 @@
         
         document.getElementById("btn_play").addEventListener("click",()=>{
           if(audioctx.state=="suspended")
-              bgm.start();             
-              startTimer();
-          }
-          if(if(audioctx.state=="suspended")
-              audioctx.resume();             
-              startTimer();
-  
-          else{
-              audioctx.suspend();
+            audioctx.resume();            
+          if( ! bgm.paused ){
+              bgm.pause();
               stopTimer();
+          }
+          else{
+              bgm.play();
+              startTimer();
           }
         });
 
         document.getElementById("btn_stop").addEventListener("click",()=>{
-            bgm.stop();
+            bgm.pause();
             stopTimer();
+            bgm.currentTime = 0;
         });
         
         btn_loop.addEventListener('click', function(){
@@ -145,4 +142,3 @@
         }
         setInterval(DrawGraph, 100);
     });
-
