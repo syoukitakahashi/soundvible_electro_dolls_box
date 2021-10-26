@@ -71,21 +71,18 @@
         
         document.getElementById("btn_play").addEventListener("click",()=>{
           if(audioctx.state=="suspended")
-            audioctx.resume();            
-          if( ! bgm.paused ){
-              bgm.pause();
-              stopTimer();
+              audioctx.resume();             
+              startTimer();
           }
           else{
-              bgm.play();
-              startTimer();
+              audioctx.suspend();
+              stopTimer();
           }
         });
 
         document.getElementById("btn_stop").addEventListener("click",()=>{
-            bgm.pause();
+            bgm.stop();
             stopTimer();
-            bgm.currentTime = 0;
         });
         
         btn_loop.addEventListener('click', function(){
