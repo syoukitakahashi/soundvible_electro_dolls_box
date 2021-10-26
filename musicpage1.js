@@ -3,6 +3,7 @@
         const gainvol = new GainNode(audioctx,{gain:0.7});
         const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.2});            
         const audioElement = document.querySelector('#bgm');
+        var bgm = audioctx.createMediaElementSource(audioElement);
         let mode = 0;
         const btn_loop = document.querySelector("#btn_loop");
         const btn_vo = document.querySelector("#btn_vo");
@@ -81,7 +82,7 @@
         });
 
         document.getElementById("btn_stop").addEventListener("click",()=>{
-            bgm.pause();
+            bgm.stop();
             stopTimer();
             bgm.currentTime = 0;
         });
