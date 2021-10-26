@@ -70,12 +70,12 @@
            
         document.getElementById("btn_play").addEventListener("click",()=>{
           if(!bgm.paused){
-            bgm.play();
-            startTimer();
-          }
-          else{
             bgm.pause();
             stopTimer();
+          }
+          else{
+            bgm.play();
+            startTimer();
           }     
         });
         
