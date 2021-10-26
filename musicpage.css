@@ -28,7 +28,7 @@
  }
  .btn0{
     margin: 0;
-    position: absolute;
+    position: relative;
     left: 53%;
     width: 7%;
     height: 5%;
