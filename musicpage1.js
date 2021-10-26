@@ -68,23 +68,32 @@
           stopTimer();
         });
         
+        var stopflag = 0;
+        
         document.getElementById("btn_play").addEventListener("click",()=>{
-          if(audioctx.state=="suspended")
-            audioctx.resume();            
-          if( ! bgm.paused ){
-              bgm.pause();
-              stopTimer();
+          if(stopflag == 0){   
+            bgm.start();
+            startTimer();
+            stopflag = 1;
           }
-          else{
-              bgm.play();
-              startTimer();
+        });
+        document.getElementById("btn_play").addEventListener("click",()=>{
+          if(stopflag == 1){
+            audioctx.suspend();            
+            stopTimer();
+            stopflag = 2;
+          }
+          if(stopflag == 2){
+            audioctx.resume();
+            startTimer();
+            stopflag = 1;
           }
         });
 
         document.getElementById("btn_stop").addEventListener("click",()=>{
             bgm.stop();
             stopTimer();
-            bgm.currentTime = 0;
+            stopflag = 0;
         });
         
         btn_loop.addEventListener('click', function(){
