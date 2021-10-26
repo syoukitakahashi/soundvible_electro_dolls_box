@@ -73,9 +73,10 @@
             bgm.play();
             startTimer();
           }
-           else{
-             bgm.pause();
-             stopTimer();
+          else{
+            bgm.pause();
+            stopTimer();
+          }     
         });
         
         document.getElementById("btn_stop").addEventListener("click",()=>{
