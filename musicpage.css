@@ -28,14 +28,15 @@
  }
  .btn0{
     margin: 0;
-    position: relative;
-    
-    //left: 53%;
+    position: relative;    
+    left: 10%;
     width: 7%;
     height: 5%;
     padding: 0;
     border: none;
     display: inline;
+    zindex: 2;
+    cursor: pointer;
     //color: #00FF7F;
  }
  .btn1 {
