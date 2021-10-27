@@ -93,11 +93,11 @@
         });
       
         btn_loop.addEventListener("click", ()=>{
-          if(bgm.loop){
-            bgm.loop = false;
+          if(audioElement.loop){
+            audioElement.loop = false;
           }
           else{
-            bgm.loop = true;
+            audioElement.loop = true;
           }
         });
       
