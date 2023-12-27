@@ -1,16 +1,25 @@
     window.addEventListener("load", ()=>{
-        const audioctx = new AudioContext();
 
+        const audioElement = document.querySelector('input[type="file"]').files;
+        // ファイルの名前を取得する
+        const fileName = audioElement.name;
+        // ファイルのサイズを取得する
+        const fileSize = audioElement.size;
+        // ファイルのデータを取得する
+        const fileData = await audioElement.arrayBuffer();
+
+        // ファイルのデータを Web Audio API で読み込む
+        const audioctx = new AudioContext();
         const audioBuffer = audioContext.createBuffer(2, 44100, 'float32');
-        const audioData = await audioContext.decodeAudioData(audioFile);
-        const audioBufferSourceNode = audioContext.createBufferSource();
+        audioBuffer.copyFrom(fileData);
+        const audioBufferSourceNode = audioctx.createBufferSource();
         audioBufferSourceNode.buffer = audioBuffer;
+        
+        var bgm = audioctx.createMediaElementSource(audioElement);
+        let mode = 0;
         
         const gainvol = new GainNode(audioctx,{gain:0.7});
         const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.2});            
-        const audioElement = document.querySelector('#bgm');
-        var bgm = audioctx.createMediaElementSource(audioElement);
-        let mode = 0;
         const btn_loop = document.querySelector("#btn_loop");
         const btn_vo = document.querySelector("#btn_vo");
         const vosl = document.querySelector("#volumesl");
