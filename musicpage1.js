@@ -1,5 +1,11 @@
     window.addEventListener("load", ()=>{
         const audioctx = new AudioContext();
+
+        const audioBuffer = audioContext.createBuffer(2, 44100, 'float32');
+        const audioData = await audioContext.decodeAudioData(audioFile);
+        const audioBufferSourceNode = audioContext.createBufferSource();
+        audioBufferSourceNode.buffer = audioBuffer;
+        
         const gainvol = new GainNode(audioctx,{gain:0.7});
         const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.2});            
         const audioElement = document.querySelector('#bgm');
