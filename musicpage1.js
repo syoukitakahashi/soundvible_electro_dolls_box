@@ -11,13 +11,7 @@
         const slider_progress = document.getElementById("progress");
         
         const gainvol = new GainNode(audioctx,{gain:0.7});
-        const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.2});            
-        const btn_loop = document.querySelector("#btn_loop");
-        const btn_vo = document.querySelector("#btn_vo");
-        const vosl = document.querySelector("#volumesl");
-        const playback_position = document.getElementById("playback_position");
-        const end_position = document.getElementById("end_position");
-        const slider_progress = document.getElementById("progress");
+        const analyser = new AnalyserNode(audioctx, {smoothingTimeConstant:0.2});
         
         var playtimer = null;
         
