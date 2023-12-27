@@ -6,7 +6,7 @@
         // ファイルのサイズを取得する
         const fileSize = audioElement.size;
         // ファイルのデータを取得する
-        const fileData = await audioElement.arrayBuffer();
+        //const fileData = await audioElement.arrayBuffer();
 
         // ファイルのデータを Web Audio API で読み込む
         const audioctx = new AudioContext();
